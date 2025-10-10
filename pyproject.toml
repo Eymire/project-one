@@ -15,8 +15,8 @@ dependencies = [
 
 [tool.ruff]
 line-length = 100
-lint.select = ["ANN", "B", "A", "ICN", "LOG", "PIE", "SIM", "ARG", "PTH", "I", "N", "E", "W", "F", "UP", "C4"]
-lint.ignore = ["B008"]
+lint.select = ["ANN", "B", "A", "ICN", "LOG", "PIE", "SIM", "ARG", "I", "N", "E", "W", "F", "UP", "C4"]
+lint.ignore = ["B008", "ANN201"]
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2

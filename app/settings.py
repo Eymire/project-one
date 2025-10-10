@@ -1,11 +1,13 @@
-import os
+from os import environ
 
 from dotenv import load_dotenv
 
 
 load_dotenv()
 
-DB_HOST = os.environ['DB_HOST']
-DB_NAME = os.environ['DB_NAME']
-DB_USER = os.environ['DB_USER']
-DB_PASSWORD = os.environ['DB_PASSWORD']
+DB_HOST = environ['DB_HOST']
+DB_NAME = environ['DB_NAME']
+DB_USER = environ['DB_USER']
+DB_PASSWORD = environ['DB_PASSWORD']
+
+APP_LINK_LENGTH = int(environ['APP_LINK_LENGTH'])
