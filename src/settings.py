@@ -11,3 +11,4 @@ DB_USER = environ['DB_USER']
 DB_PASSWORD = environ['DB_PASSWORD']
 
 APP_LINK_LENGTH = int(environ['APP_LINK_LENGTH'])
+APP_LINK_TTL_DAYS = int(environ['APP_LINK_TTL_DAYS'])

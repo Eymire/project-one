@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 
-from app.dependencies import session_dep
-from app.schemas import ShortLinkAddSchema, ShortLinkShowSchema
+from src.dependencies import session_dep
+from src.schemas import ShortLinkAddSchema, ShortLinkShowSchema
 
 from . import services
 
@@ -28,6 +28,4 @@ async def add_link(
 ) -> ShortLinkShowSchema:
     result = await services.add_link(session, str(data.original_url))
 
-    return {
-        'short_url': str(request.base_url) + result,
-    }  # type: ignore
+    return {'short_url': str(request.base_url) + result}  # type: ignore

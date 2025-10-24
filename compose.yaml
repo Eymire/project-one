@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: [ "uv", "run", "gunicorn", "app.main:create_app()", "-b", "0.0.0.0:8080", "-k", "uvicorn_worker.UvicornWorker", "-w", "${API_WORKERS_QUANTITY}" ]
+    command: [ "uv", "run", "gunicorn", "src.main:create_app()", "-b", "0.0.0.0:8080", "-k", "uvicorn_worker.UvicornWorker", "-w", "${API_WORKERS_QUANTITY}" ]
     ports:
       - ${API_PORT}:8080
     volumes:
@@ -29,6 +29,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+      start_period: 3s
 
 volumes:
   migrations-data: {}

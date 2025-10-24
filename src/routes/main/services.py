@@ -4,8 +4,8 @@ from fastapi import HTTPException
 from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import ShortLinkModel
-from app.settings import APP_LINK_LENGTH
+from src.models import ShortLinkModel
+from src.settings import APP_LINK_LENGTH
 
 
 async def get_link(session: AsyncSession, short_link_id: str) -> str:
@@ -40,7 +40,10 @@ async def add_link(session: AsyncSession, original_link: str) -> str:
 
     stmt = (
         insert(ShortLinkModel)
-        .values(id=short_link_id, original_link=original_link)
+        .values(
+            id=short_link_id,
+            original_link=original_link,
+        )
         .returning(ShortLinkModel.id)
     )
     result = await session.execute(stmt)

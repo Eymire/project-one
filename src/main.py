@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 
-from app.api.router import router as api_router
+from src.routes.router import router as api_router
 
 
 def create_app() -> FastAPI:

@@ -1,7 +1,9 @@
-from datetime import UTC, datetime
+from datetime import datetime
 
-from sqlalchemy import DateTime
+from sqlalchemy import DateTime, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+from src.settings import APP_LINK_TTL_DAYS
 
 
 class Base(DeclarativeBase):
@@ -12,7 +14,7 @@ class ShortLinkModel(Base):
     __tablename__ = 'short-links'
 
     original_link: Mapped[str]
-    created_at: Mapped[datetime] = mapped_column(
+    ends_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
-        default=lambda: datetime.now(UTC),
+        server_default=text(f"CURRENT_TIMESTAMP + interval '{APP_LINK_TTL_DAYS} days'"),
     )
